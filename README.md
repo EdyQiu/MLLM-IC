@@ -18,12 +18,61 @@ This repository provides code and tools for reproducing the robustness benchmark
 - `scripts/`: Quick-start bash scripts to run the evaluation.
 - `results/`: Output tables and figures.
 
-## 🖼️ Corruption Types
+## 📦 Dataset & Benchmark
 
-We simulate 40+ corruption types across:
-- **Pixel-Level**: Noise, blur
-- **Regional-Level**: Occlusion, weather
-- **Global-Level**: Compression, geometric transformations
+We provide the full **MLLM-IC Benchmark** and a streamlined subset for quick evaluation.
+
+| Resource                         | Description                              | Status            |
+|----------------------------------|------------------------------------------|-------------------|
+| 📥 MLLM-IC (Full)       | Full benchmark. | 🔄 Coming Soon     |
+| 📥 MLLM-IC (Subset)| Lightweight version for fast evaluation.            | 🔄 Coming Soon     |
+
+> ⚠️ **Note**: Download links and dataset details will be updated in future releases. Stay tuned!
+
+
+## 🖼️ Corruption Dimensions
+
+To comprehensively evaluate the visual robustness of Multimodal Large Language Models (MLLMs), we categorize 40+ image corruption types into a **three-level taxonomy** based on their formation mechanism: **Global**, **Region**, and **Pixel Level**. This allows us to analyze model sensitivity at multiple operational scales.
+
+### Global-Level Corruptions
+
+These corruptions affect the **entire image** uniformly. They typically change overall image structure, geometry, or tone distribution.
+
+| Category             | Corruption Types                                                              |
+|----------------------|-------------------------------------------------------------------------------|
+| **Color Channel**     | Brightness, Contrast, Saturation, Invert, GammaContrast, Channel Shuffle     |
+| **Geometric Transform** | Scale (x, y, xy), Shear (x, y, xy), Rotate                                   |
+| **Blur**              | Defocus Blur, Glass Blur, Zoom Blur, Motion Blur, Gaussian Blur              |
+| **Texture Changing**  | Canny Edge, Sharpen, Cartoon                                                  |
+
+
+### Region-Level Corruptions
+
+These perturbations affect **localized image areas**, simulating real-world scenarios such as occlusion or partial degradation.
+
+| Category             | Corruption Types                                                              |
+|----------------------|-------------------------------------------------------------------------------|
+| **Occlusion**         | Cutout, Coarse Dropout                                                        |
+| **Compression**       | Average Pooling, Max Pooling, Pixelation, JPEG Compression                   |
+| **Weather Condition** | Snow, Frost, Fog, Rain, Snowflake, Spatter                                   |
+| **Shape Changing**    | Elastic Transform, Jigsaw, Piecewise Affine                                  |
+
+
+### Pixel-Level Corruptions
+
+These simulate **low-level noise** often encountered in sensor degradation or transmission errors.
+
+| Category    | Corruption Types                                                       |
+|-------------|------------------------------------------------------------------------|
+| **Noise**   | Impulse Noise, Shot Noise, Speckle Noise, Gaussian Noise, Poisson Noise |
+
+
+### Why Corruption Dimensions Matter
+
+- ✅ **Diagnostic Power**: Understand which corruption types most significantly impact model performance.
+- ✅ **Sensitivity Tracking**: Reveal per-model vulnerability under different corruptions.
+- ✅ **Benchmark Fidelity**: Provide task-level robustness insights relevant to real-world deployment.
+
 
 ## 🧠 Capability Dimensions
 
@@ -52,14 +101,12 @@ To assess the robustness of Multimodal Large Language Models (MLLMs) under corru
 - ✅ **Model Differentiation**: For example, DeepSeek-VL excels at global context and logic reasoning, while Transcore-M is strong in part-level recognition.
 - ✅ **Robustness Diagnosis**: Helps identify which model capabilities are more vulnerable to which types of image corruption (e.g., blur vs. occlusion).
 
+### 🔖 BibTeX
 
-## 🚀 Quick Start
-
-```bash
-# 1. Clone repo & install dependencies
-git clone https://github.com/yourusername/MLLM-Robustness-Eval.git
-cd MLLM-Robustness-Eval
-pip install -r requirements.txt
-
-# 2. Run benchmark on all models
-bash scripts/run_all.sh
+```bibtex
+@article{Qiu2025mllmic,
+  title     = {Benchmarking Multimodal Large Language Models Against Image Corruptions},
+  author    = {Xinkuan Qiu, Meina Kan, Yongbin Zhou, Shiguang Shan},
+  journal   = {Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
+  year      = {2025},
+}
