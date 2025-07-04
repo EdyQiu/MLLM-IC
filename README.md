@@ -12,11 +12,7 @@ This repository provides code and tools for reproducing the robustness benchmark
 ## 📂 Project Structure
 
 - `benchmark/`: Benchmark execution and evaluation.
-- `corruptions/`: Implementations of various image corruption types.
-- `models/`: Wrappers for loading and querying each MLLM.
-- `configs/`: YAML files specifying benchmark settings.
-- `scripts/`: Quick-start bash scripts to run the evaluation.
-- `results/`: Output tables and figures.
+- `corruptions/`: Generation of various image corruption types.
 
 ## 📦 Dataset & Benchmark
 
